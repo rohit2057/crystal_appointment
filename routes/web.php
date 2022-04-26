@@ -17,10 +17,11 @@ use Illuminate\Support\Facades\Route;
    return view('home');
  });
 
-// Route::get('/visitor', function () {
-//     return view('visitor');
-// });
 
+//officer_works
 Route::get('/officer',[\App\Http\Controllers\OfficerController::class,'index'])->name('officer');
+Route::post('/officerAdd',[\App\Http\Controllers\OfficerController::class,'officerAdd'])->name('officerAdd');
+
+
 Route::get('/visitor',[\App\Http\Controllers\VisitorController::class,'visit'])->name('visitor');
 Route::get('/activity',[\App\Http\Controllers\ActivityController::class,'activity'])->name('activity');
