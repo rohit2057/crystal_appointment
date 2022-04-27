@@ -94,9 +94,9 @@
                           <td>{{$data->first_name}}</td>
                           <td>{{$data->last_name}}</td>
                           <td>{{$data->post}}</td>
-                          <td>{{$data->status}}</td>
                           <td>{{$data->work_start_time}}</td>
                           <td>{{$data->work_end_time}}</td>
+                          <td>{{$data->status}}</td>
                         </tr>
                             
                         @endforeach

@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Route;
  });
 
 
-//officer_works
+//for_officer_works
 Route::get('/officer',[\App\Http\Controllers\OfficerController::class,'index'])->name('officer');
 Route::post('/officerAdd',[\App\Http\Controllers\OfficerController::class,'officerAdd'])->name('officerAdd');
 
-
+//for_visitor_works
 Route::get('/visitor',[\App\Http\Controllers\VisitorController::class,'visit'])->name('visitor');
+Route::post('/visitorAdd',[\App\Http\Controllers\VisitorController::class,'visitorAdd'])->name('visitorAdd');
+
 Route::get('/activity',[\App\Http\Controllers\ActivityController::class,'activity'])->name('activity');

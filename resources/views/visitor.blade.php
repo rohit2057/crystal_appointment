@@ -1,97 +1,88 @@
 @extends('shared.layout')
 @section('content')
 
+<div class="modal fade" id="addVisitor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Officer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{route('visitorAdd')}}">
+          @csrf
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" name="v_name" id="first_name" class="form-control" />
+                <label class="form-label" for="form6Example1">Full Name</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="contact" name="v_contact" id="v_contact" class="form-control" />
+                <label class="form-label" for="form6Example2">contact</label>
+              </div>
+            </div>
+          </div>
 
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="email" name="v_email" id="v_email" class="form-control" />
+                <label class="form-label" for="form6Example1">email</label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Visitor</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div> 
 
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Data table</h4>
-        <div class="row">
+         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
               <table id="order-listing" class="table">
+                <tr>
+                  <div class="d-flex flex-row justify-content-between">
+                          
+                    <a class="btn btn-secondary align-self-center d-block" data-toggle="modal" data-target="#addVisitor">Add Visitor</a>
+                  </div>
+                </tr>
                 <thead>
                   <tr>
                       <th>Id</th>
                       <th>Name</th>
-                      <th>Customer</th>
                       <th>Contact Number</th>
                       <th>Email</th>
                       <th>Status</th>
                       <th>Actions</th>
+                     
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($v_value as $data)
                   <tr>
-                      <td>1</td>
-                      <td>2012/08/03</td>
-                      <td>Edinburgh</td>
-                      <td>New York</td>
-                      <td>$3200</td>
-                      <td>
-                        <label class="badge badge-info">On hold</label>
-                      </td>
-                      <td>
-                        <button class="btn btn-outline-primary">Update</button>
-                        <button class="btn btn-outline-primary">Appointment</button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>2</td>
-                      <td>2015/04/01</td>
-                      <td>Doe</td>
-                      <td>Brazil</td>
-                      <td>$7500</td>
-                      <td>
-                        <label class="badge badge-danger">Pending</label>
-                      </td>
-                      <td>
-                        <button class="btn btn-outline-primary">Update</button>
-                        <button class="btn btn-outline-primary">Appointment</button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>3</td>
-                      <td>2010/11/21</td>
-                      <td>Sam</td>
-                      <td>Tokyo</td>
-                      <td>$6300</td>
-                      <td>
-                        <label class="badge badge-success">Closed</label>
-                      </td>
-                      <td>
-                        <button class="btn btn-outline-primary">Update</button>
-                        <button class="btn btn-outline-primary">Appointment</button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>4</td>
-                      <td>2016/01/12</td>
-                      <td>Sam</td>
-                      <td>Tokyo</td>
-                      <td>$6300</td>
-                      <td>
-                        <label class="badge badge-success">Closed</label>
-                      </td>
-                      <td>
-                        <button class="btn btn-outline-primary">Update</button>
-                        <button class="btn btn-outline-primary">Appointment</button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>5</td>
-                      <td>2017/12/28</td>
-                      <td>Sam</td>
-                      <td>Tokyo</td>
-                      <td>$6300</td>
-                      <td>
-                        <label class="badge badge-success">Closed</label>
-                      </td>
-                      <td>
-                        <button class="btn btn-outline-primary">Update</button>
-                        <button class="btn btn-outline-primary">Appointment</button>
-                      </td>
-                  </tr>
+                    <td>{{$data->v_id}}</td>
+                    <td>{{$data->v_name}}</td>
+                    <td>{{$data->v_contact}}</td>
+                    <td>{{$data->v_email}}</td>
+                    <td>{{$data->v_status}}</td>
+                    
+                    <button class="btn btn-outline-primary">Update</button>
+                    <button class="btn btn-outline-primary">Appointment</button>
+                    
+                </tr>
+                @endforeach
                 
                 </tbody>
               </table>
