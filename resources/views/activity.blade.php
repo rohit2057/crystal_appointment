@@ -1,4 +1,62 @@
 @extends('shared.layout')
 @section('content')
- this is Activity
+
+
+    
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="table-responsive">
+                <table id="order-listing" class="table">
+                    <tr>
+                        <div class="d-flex flex-row justify-content-between">
+                          
+                            <a class="btn btn-secondary align-self-center d-block" data-toggle="modal" data-target="#">add officer</a>
+                        </div>
+                    </tr>
+                  <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Officer Name</th>
+                        <th>Visitor Name</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Added On</th>
+                        <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>2012/08/03</td>
+                        <td>Edinburgh</td>
+                        <td>Edinburgh</td>
+                        <td>Edinburgh</td>
+                        <td>Edinburgh</td>
+                        <td>New York</td>
+                        <td>$1500</td>
+                        <td>$3200</td>
+                        <td>
+                          <label class="badge badge-info">On hold</label>
+                        </td>
+                        <td>
+                          <button class="btn btn-outline-primary">View</button>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+
+
 @endsection

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\visitor;
 use Illuminate\Http\Request;
 
@@ -22,7 +21,11 @@ class VisitorController extends Controller
         $obj->v_status = 'active';
         $obj->v_email = $request->v_email;
         $obj->save();
+
+        
      
     }
+
+  
 
 }

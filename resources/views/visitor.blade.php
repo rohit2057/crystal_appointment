@@ -78,8 +78,8 @@
                     <td>{{$data->v_email}}</td>
                     <td>{{$data->v_status}}</td>
                     
-                    <button class="btn btn-outline-primary">Update</button>
-                    <button class="btn btn-outline-primary">Appointment</button>
+                 <td>   <button class="btn btn-outline-primary">Update</button>
+                   <button class="btn btn-outline-primary">Appointment</button> </td>
                     
                 </tr>
                 @endforeach
