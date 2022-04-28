@@ -1,6 +1,12 @@
 @extends('shared.layout')
 @section('content')
 
+@if ($message = Session::get('success'))
+  <div class="alert alert-success" role="alert">
+      {{ $message }}
+  </div>
+@endif
+
 <div class="modal fade" id="addVisitor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -76,7 +82,22 @@
                     <td>{{$data->v_name}}</td>
                     <td>{{$data->v_contact}}</td>
                     <td>{{$data->v_email}}</td>
-                    <td>{{$data->v_status}}</td>
+                    {{-- <td>{{$data->v_status}}</td> --}}
+
+                    <td>  <?php if($data->v_status == 'active'){ ?> 
+                      <form action="visitor_update" method="post" id="submitform">
+                        @csrf
+                        @method('put')
+                        <button class="btn btn-success" id="submit" name="submit" value="{{$data->v_id}}">Active</button>
+                      </form>
+                    <?php }else{ ?> 
+                      <form action="visitor_update" method="post" id="submitform">
+                        @csrf
+                        @method('put')
+                        <button class="btn btn-danger" id="submit" name="submit" value="{{$data->v_id}}">InActive</button>
+                      </form>
+                    <?php } ?>
+                  </td>
                     
                  <td>   <button class="btn btn-outline-primary">Update</button>
                    <button class="btn btn-outline-primary">Appointment</button> </td>
@@ -91,6 +112,13 @@
         </div>
       </div>
     </div>
-  
+    <script>
+      $(document).ready(function(){
+        $(#submit).on('click',function(){
+          $(#submitform).submit();
+        });
+      });
+    
+    </script>
 
 @endsection

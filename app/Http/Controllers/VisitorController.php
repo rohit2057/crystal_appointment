@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\visitor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VisitorController extends Controller
 {
@@ -26,6 +27,32 @@ class VisitorController extends Controller
         
      
     }
+        
+    function visitor_update(Request $request)
+    {
+	//get product status with the help of product ID
+	$data = DB::table('visitors')
+				->select('v_status')
+				->where('v_id','=',$request->submit)
+				->first();
+
+	//Check user status
+	if($data->v_status == 'active'){
+		$v_status = 'inactive';
+	}elseif($data->v_status == 'inactive'){
+		$v_status = 'active';
+	}
+
+	//update product status
+	$values = array('v_status' => $v_status );
+	DB::table('visitors')->where('v_id',$request->submit)->update($values);
+
+    return redirect()->back()->with('success','status updated Successfully');
+
+	
+    }
+
+
 
   
 

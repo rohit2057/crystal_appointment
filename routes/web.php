@@ -26,7 +26,7 @@ Route::put('/status_update',[\App\Http\Controllers\OfficerController::class,'sta
 //for_visitor_works
 Route::get('/visitor',[\App\Http\Controllers\VisitorController::class,'visit'])->name('visitor');
 Route::post('/visitorAdd',[\App\Http\Controllers\VisitorController::class,'visitorAdd'])->name('visitorAdd');
-// Route::get('/visitor',[\App\Http\Controllers\VisitorController::class,'status_update'])->name('status_update');
+Route::put('/visitor_update',[\App\Http\Controllers\VisitorController::class,'visitor_update'])->name('visitor_update');
 
 
 Route::get('/activity',[\App\Http\Controllers\ActivityController::class,'activity'])->name('activity');
