@@ -23,7 +23,7 @@ class OfficerController extends Controller
        $obj->work_start_time = $request->work_start_time;
        $obj->work_end_time = $request->work_end_time;
        $obj->save();
-
+       return redirect()->back()->with('success','You have successfully added an Officer');
     }
 
     

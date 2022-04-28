@@ -7,6 +7,54 @@
   </div>
 @endif
 
+ {{-- modal for Update --}}
+ <div class="modal fade" id="updateVisitor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Officer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{route('visitorAdd')}}">
+          @csrf
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" name="v_name" id="first_name" class="form-control" />
+                <label class="form-label" for="form6Example1">Full Name</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="contact" name="v_contact" id="v_contact" class="form-control" />
+                <label class="form-label" for="form6Example2">contact</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="email" name="v_email" id="v_email" class="form-control" />
+                <label class="form-label" for="form6Example1">email</label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Update Visitor</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div> 
+
+{{-- modal for insert --}}
+
 <div class="modal fade" id="addVisitor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -99,7 +147,7 @@
                     <?php } ?>
                   </td>
                     
-                 <td>   <button class="btn btn-outline-primary">Update</button>
+                 <td>   <button class="btn btn-outline-primary"data-toggle="modal" data-target="#updateVisitor">Update</button>
                    <button class="btn btn-outline-primary">Appointment</button> </td>
                     
                 </tr>
