@@ -2,7 +2,11 @@
   @extends('shared.layout')
   @section('content')
       
-
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success" role="alert">
+      {{ $message }}
+  </div>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="addOfficer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -97,7 +101,21 @@
                           <td>{{$data->post}}</td>
                           <td>{{$data->work_start_time}}</td>
                           <td>{{$data->work_end_time}}</td>
-                          <td>{{$data->status}}</td>
+                          {{-- <td>{{$data->status}}</td> --}}
+                        <td>  <?php if($data->status == 'active'){ ?> 
+                            <form action="status_update" method="post" id="submitform">
+                              @csrf
+                              @method('put')
+                              <button class="btn btn-success" id="submit" name="submit" value="{{$data->officer_id}}">Active</button>
+                            </form>
+                          <?php }else{ ?> 
+                            <form action="status_update" method="post" id="submitform">
+                              @csrf
+                              @method('put')
+                              <button class="btn btn-danger" id="submit" name="submit" value="{{$data->officer_id}}">InActive</button>
+                            </form>
+                          <?php } ?>
+                        </td>
                           <td>
                           <button class="btn btn-outline-primary">Update</button>
                           <button class="btn btn-outline-primary">Appointment</button>
@@ -115,6 +133,14 @@
         </div>
    </div>
 </div>
+<script>
+  $(document).ready(function(){
+    $(#submit).on('click',function(){
+      $(#submitform).submit();
+    });
+  });
+
+</script>
 @endsection
   
 

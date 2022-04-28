@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\visitor;
 use Illuminate\Http\Request;
 
@@ -8,7 +9,7 @@ class VisitorController extends Controller
 {
     function visit(){
         $data= visitor::paginate(10);
-        return view('visitor',['v_value'=>$data]);
+        return view('visitor',['value'=>$data]);
     }
 
     

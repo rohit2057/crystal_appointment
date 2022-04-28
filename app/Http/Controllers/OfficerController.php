@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\officer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OfficerController extends Controller
 {
@@ -24,6 +25,31 @@ class OfficerController extends Controller
        $obj->save();
 
     }
+
+    
+function status_update(Request $request)
+{
+	//get product status with the help of product ID
+	$data = DB::table('officers')
+				->select('status')
+				->where('officer_id','=',$request->submit)
+				->first();
+
+	//Check user status
+	if($data->status == 'active'){
+		$status = 'inactive';
+	}elseif($data->status == 'inactive'){
+		$status = 'active';
+	}
+
+	//update product status
+	$values = array('status' => $status );
+	DB::table('officers')->where('officer_id',$request->submit)->update($values);
+
+    return redirect()->back()->with('success','status updated Successfully');
+
+	
+}
 
 
 }

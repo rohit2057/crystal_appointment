@@ -4,7 +4,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Crystal Appointment</title>
+  <title> Appointment</title>
   <link rel="stylesheet" href="{{asset('assets/css/materialdesignicons.min.css')}}">
       <link rel="stylesheet" href="{{asset('assets/css/vendor.bundle.base.css')}}">
       <link rel="stylesheet" href="{{asset('assets/css/bootstrap-datepicker.min.css')}}">
@@ -24,7 +24,7 @@
         </ul>
 
         <ul class="navbar-nav navbar-nav-right">
-            <span class="nav-profile-name">Crystal Appointment</span>
+            <span class="nav-profile-name"> Appointment</span>
          </ul>
       </div>
     </nav>

@@ -70,7 +70,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($v_value as $data)
+                  @foreach ($value as $data)
                   <tr>
                     <td>{{$data->v_id}}</td>
                     <td>{{$data->v_name}}</td>
