@@ -22,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/officer',[\App\Http\Controllers\OfficerController::class,'index'])->name('officer');
 Route::post('/officerAdd',[\App\Http\Controllers\OfficerController::class,'officerAdd'])->name('officerAdd');
 Route::put('/status_update',[\App\Http\Controllers\OfficerController::class,'status_update']);
+Route::put('/getOfficerDetail',[\App\Http\Controllers\OfficerController::class,'getOfficerDetail'])->name('getOfficerDetail');
+Route::put('/officerUpdate',[\App\Http\Controllers\OfficerController::class,'officerUpdate'])->name('officerUpdate');
+
 
 //for_visitor_works
 Route::get('/visitor',[\App\Http\Controllers\VisitorController::class,'visit'])->name('visitor');

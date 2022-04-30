@@ -12,7 +12,7 @@
                     <tr>
                         <div class="d-flex flex-row justify-content-between">
                           
-                            <a class="btn btn-secondary align-self-center d-block" data-toggle="modal" data-target="#">add officer</a>
+                            <a class="btn btn-secondary align-self-center d-block" data-toggle="modal" data-target="#">add new activity</a>
                         </div>
                     </tr>
                   <thead>
