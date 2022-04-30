@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OfficerController;
+use App\Http\Controllers\VisitorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,10 @@ Route::put('/officerUpdate',[OfficerController::class,'officerUpdate'])->name('o
 
 
 //for_visitor_works
-Route::get('/visitor',[\App\Http\Controllers\VisitorController::class,'visit'])->name('visitor');
-Route::post('/visitorAdd',[\App\Http\Controllers\VisitorController::class,'visitorAdd'])->name('visitorAdd');
-Route::put('/visitor_update',[\App\Http\Controllers\VisitorController::class,'visitor_update'])->name('visitor_update');
+Route::get('/visitor',[VisitorController::class,'visit'])->name('visitor');
+Route::post('/visitorAdd',[VisitorController::class,'visitorAdd'])->name('visitorAdd');
+Route::put('/getVisitorDetail',[VisitorController::class,'getVisitorDetail'])->name('getVisitorDetail');
+Route::put('/visitor_update',[VisitorController::class,'visitor_update'])->name('visitor_update');
 
 
 Route::get('/activity',[\App\Http\Controllers\ActivityController::class,'activity'])->name('activity');
