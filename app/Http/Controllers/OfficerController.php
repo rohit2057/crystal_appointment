@@ -52,16 +52,20 @@ function status_update(Request $request)
 	
 }  
 
-// function getOfficerDetail($id)
-// {
-//     $officers = officer::find($id);
-//     $workingdays = workingdays::where('officer_id', $id)->get();
-//     return response()->json([
-//         'status'=>200,
-//         'officers'=>$officers,
-//         'workingdays' => $workingdays,
-//     ]);
-// }
+function getOfficerDetail(Request $request)
+{
+    $officerDetail = officer::find($request->officer_id);
+    $officerDetail->first_name = $request->new_first_name;
+    $officerDetail->last_name = $request->new_last_name;
+    $officerDetail->work_start_time = $request->new_work_start_time;
+    $officerDetail->work_end_time = $request->new_work_end_time;
+    $officerDetail->post = $request->new_post;
+    if($officerDetail->update()){
+        return redirect("/officer");
+    }
+    
+    return $request->input();
+}
 
 // function officerUpdate(Request $req)
 // {

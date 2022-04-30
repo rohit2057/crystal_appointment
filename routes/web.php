@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OfficerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 
 //for_officer_works
-Route::get('/officer',[\App\Http\Controllers\OfficerController::class,'index'])->name('officer');
-Route::post('/officerAdd',[\App\Http\Controllers\OfficerController::class,'officerAdd'])->name('officerAdd');
-Route::put('/status_update',[\App\Http\Controllers\OfficerController::class,'status_update']);
-Route::put('/getOfficerDetail',[\App\Http\Controllers\OfficerController::class,'getOfficerDetail'])->name('getOfficerDetail');
-Route::put('/officerUpdate',[\App\Http\Controllers\OfficerController::class,'officerUpdate'])->name('officerUpdate');
+Route::get('/officer',[OfficerController::class,'index'])->name('officer');
+Route::post('/officerAdd',[OfficerController::class,'officerAdd'])->name('officerAdd');
+Route::put('/status_update',[OfficerController::class,'status_update']);
+Route::put('/getOfficerDetail',[OfficerController::class,'getOfficerDetail'])->name('getOfficerDetail');
+Route::put('/officerUpdate',[OfficerController::class,'officerUpdate'])->name('officerUpdate');
 
 
 //for_visitor_works

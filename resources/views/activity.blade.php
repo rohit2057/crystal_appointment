@@ -31,13 +31,15 @@
                     </tr>
                   </thead>
                   <tbody>
+                 
+
                     <tr>
-                        <td>1</td>
-                        <td>2012/08/03</td>
-                        <td>Edinburgh</td>
-                        <td>Edinburgh</td>
-                        <td>Edinburgh</td>
-                        <td>Edinburgh</td>
+                      <td>New York</td>
+                      <td>New York</td>
+                      <td>New York</td>
+                      <td>New York</td>
+                      <td>New York</td>
+                      <td>New York</td>
                         <td>New York</td>
                         <td>$1500</td>
                         <td>$3200</td>
@@ -48,6 +50,7 @@
                           <button class="btn btn-outline-primary">View</button>
                         </td>
                     </tr>
+                   
                   </tbody>
                 </table>
               </div>

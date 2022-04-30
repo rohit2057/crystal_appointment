@@ -23,39 +23,38 @@
           @csrf
           @method('put')
           <!-- 2 column grid layout with text inputs for the first and last names -->
-          <input type="hidden" name="new_officer_id" id="new_officer_id">
+          <input type="hidden" name="officer_id" id="officer_id">
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <input type="text" name="new_first_name" id="new_first_name" class="form-control" />
+                <input type="text" name="new_first_name" id="firstName" class="form-control"/>
                 <label class="form-label" for="form6Example1">First name</label>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <input type="text" name="new_last_name" id="new_last_name" class="form-control" />
+                <input type="text" name="new_last_name" id="lastName" class="form-control" />
                 <label class="form-label" for="form6Example2">Last name</label>
               </div>
             </div>
           </div>
-
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <input type="text" name="new_work_start_time" id="new_work_start_time" class="form-control" />
+                <input type="text" name="new_work_start_time" id="startTime" class="form-control" />
                 <label class="form-label" for="form6Example1">Start Time</label>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <input type="text" name="new_work_end_time" id="new_work_end_time" class="form-control" />
+                <input type="text" name="new_work_end_time" id="endTime" class="form-control" />
                 <label class="form-label" for="form6Example2">End Time</label>
               </div>
             </div>
 
             <div class="col">
               <div class="form-outline">
-                <input type="text" name="new_post" id="new_post" class="form-control" />
+                <input type="text" name="new_post" id="post" class="form-control" />
                 <label class="form-label" for="form6Example2">Post</label>
               </div>
             </div>
@@ -288,7 +287,20 @@
                           <?php } ?>
                         </td>
                           <td>
-                          <button class="btn btn-outline-primary" id="updatebtn" data-toggle="modal" data-target="#updateOfficer"  value="{{$data->id}}">Update</button>
+                          <button class="btn btn-outline-primary" id="updatebtn" data-toggle="modal" data-target="#updateOfficer"  onclick="showUpdateModal('{{$data}}')">Update</button>
+                          <script>
+                              function showUpdateModal(strdata){
+                                let data = JSON.parse(strdata);
+                                     console.log(data);
+                                     $("#officer_id").val(data.officer_id);
+                                     $("#firstName").val(data.first_name);
+                                     $("#lastName").val(data.last_name);
+                                     $("#startTime").val(data.work_start_time);
+                                     $("#endTime").val(data.work_end_time);
+                                     $("#post").val(data.post);
+                                    
+                                 }
+                          </script>
                           <button class="btn btn-outline-primary">Appointment</button>
                           </td>
                         </tr>
@@ -310,6 +322,7 @@
       $(#submitform).submit();
     });
   });
+
 
 </script>
 @endsection

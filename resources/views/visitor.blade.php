@@ -7,7 +7,7 @@
   </div>
 @endif
 
- {{-- modal for Update
+ {{-- modal for Update --}}
  <div class="modal fade" id="updateVisitor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -18,9 +18,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="{{route('visitorAdd')}}">
+        <form method="POST" action="{{route('getVisitorDetail')}}">
           @csrf
           <!-- 2 column grid layout with text inputs for the first and last names -->
+          <input type="hidden" name="v_id" id="v_id">
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
@@ -51,7 +52,7 @@
 
     </div>
   </div>
-</div>  --}}
+</div> 
 
 {{-- modal for insert --}}
 
@@ -148,6 +149,18 @@
                   </td>
                     
                  <td>   <button class="btn btn-outline-primary"data-toggle="modal" data-target="#updateVisitor">Update</button>
+                  <script>
+                    function showUpdateModal(strdata){
+                      let data = JSON.parse(strdata);
+                           console.log(data);
+                           $("#v_id").val(data.v_id);
+                           $("#v_Name").val(data.v_name);
+                           $("#v_contact").val(data.v_contact);
+                           $("#v_email").val(data.v_email);
+                           
+                          
+                       }
+                </script>
                    <button class="btn btn-outline-primary">Appointment</button> </td>
                     
                 </tr>

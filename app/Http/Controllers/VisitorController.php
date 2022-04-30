@@ -52,7 +52,19 @@ class VisitorController extends Controller
 	
     }
 
+    function getVisitorDetail(Request $request)
+{
+    $visitorDetail = visitor::find($request->v_id);
+    $visitorDetail->v_id = $request->v_name;
+    $visitorDetail->v_contact = $request->v_contact;
+    $visitorDetail->v_email = $request->v_email;
 
+    if($visitorDetail->update()){
+        return redirect("/visitor");
+    }
+    
+    return $request->input();
+}
 
   
 
