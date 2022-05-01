@@ -14,18 +14,18 @@ class ActivityController extends Controller
         
     }
 
-    function getActivitiesDetails()
-    {
-        $activity['a'] = Activity::leftjoin('officers','activities.officer_id','=','officer.id')
-        ->leftjoin('visitors','activities.visitor_id','=','v.id')
-        ->get()->all(); 
+    // function getActivitiesDetails()
+    // {
+    //     $activity['a'] = Activity::leftjoin('officers','activities.officer_id','=','officer.id')
+    //     ->leftjoin('visitors','activities.visitor_id','=','v.id')
+    //     ->get()->all(); 
 
-        $activity['b'] = DB::table('officers')->get()->all();
+    //     $activity['b'] = DB::table('officers')->get()->all();
 
-        $activity['c'] = DB::table('visitors')->get()->all();
+    //     $activity['c'] = DB::table('visitors')->get()->all();
 
-        return view('activity',['value'=>$activity]);
+    //     return view('activity',['value'=>$activity]);
 
-    }
+    // }
 
 }

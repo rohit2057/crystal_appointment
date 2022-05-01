@@ -47,7 +47,7 @@ class VisitorController extends Controller
 	$values = array('v_status' => $v_status );
 	DB::table('visitors')->where('v_id',$request->submit)->update($values);
 
-    return redirect()->back()->with('success','status updated Successfully');
+    return redirect()->back()->with('success','status Successfully updated ');
 
 	
     }

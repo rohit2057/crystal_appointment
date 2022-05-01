@@ -61,7 +61,7 @@ function getOfficerDetail(Request $request)
     $officerDetail->work_end_time = $request->new_work_end_time;
     $officerDetail->post = $request->new_post;
     if($officerDetail->update()){
-        return redirect("/officer");
+        return redirect()->back()->with('success','Officer updated Successfully');
     }
     
     return $request->input();
