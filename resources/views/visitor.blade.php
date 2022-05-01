@@ -12,7 +12,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Officer</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Visitor</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -20,18 +20,20 @@
       <div class="modal-body">
         <form method="POST" action="{{route('getVisitorDetail')}}">
           @csrf
+          @method('put')
+          
           <!-- 2 column grid layout with text inputs for the first and last names -->
-          <input type="hidden" name="v_id" id="v_id">
+          <input type="hidden" name="new_v_id" id="new_v_id">
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <input type="text" name="v_name" id="first_name" class="form-control" />
+                <input type="text" name="new_v_name" id="new_v_name" class="form-control" />
                 <label class="form-label" for="form6Example1">Full Name</label>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <input type="contact" name="v_contact" id="v_contact" class="form-control" />
+                <input type="contact" name="new_v_contact" id="new_v_contact" class="form-control" />
                 <label class="form-label" for="form6Example2">contact</label>
               </div>
             </div>
@@ -40,7 +42,7 @@
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <input type="email" name="v_email" id="v_email" class="form-control" />
+                <input type="email" name="new_v_email" id="new_v_email" class="form-control" />
                 <label class="form-label" for="form6Example1">email</label>
               </div>
             </div>
@@ -148,15 +150,15 @@
                     <?php } ?>
                   </td>
                     
-                 <td>   <button class="btn btn-outline-primary"data-toggle="modal" data-target="#updateVisitor">Update</button>
+                 <td>   <button class="btn btn-outline-primary"data-toggle="modal" data-target="#updateVisitor" onclick="showUpdateModal('{{$data}}')">Update</button>
                   <script>
                     function showUpdateModal(strdata){
                       let data = JSON.parse(strdata);
                            console.log(data);
-                           $("#v_id").val(data.v_id);
-                           $("#v_Name").val(data.v_name);
-                           $("#v_contact").val(data.v_contact);
-                           $("#v_email").val(data.v_email);
+                           $("#new_v_id").val(data.v_id);
+                           $("#new_v_name").val(data.v_name);
+                           $("#new_v_contact").val(data.v_contact);
+                           $("#new_v_email").val(data.v_email);
                            
                           
                        }

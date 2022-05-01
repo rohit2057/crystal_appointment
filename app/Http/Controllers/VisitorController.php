@@ -54,16 +54,16 @@ class VisitorController extends Controller
 
     function getVisitorDetail(Request $request)
 {
-    $visitorDetail = visitor::find($request->v_id);
-    $visitorDetail->v_id = $request->v_name;
-    $visitorDetail->v_contact = $request->v_contact;
-    $visitorDetail->v_email = $request->v_email;
 
-    if($visitorDetail->update()){
-        return redirect("/visitor");
-    }
-    
-    return $request->input();
+    $data = array(
+        'v_name' => $request->new_v_name,
+        'v_contact' => $request->new_v_contact,
+        'v_email' => $request->new_v_email,
+        );
+
+    $res = DB::table('visitors')->where('v_id','=',$request->new_v_id)->update($data);
+
+     return redirect()->back()->with('success','Visitor updated Successfully');
 }
 
   

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\VisitorController;
-
+use App\Http\Controllers\ActivityController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,4 +35,5 @@ Route::put('/getVisitorDetail',[VisitorController::class,'getVisitorDetail'])->n
 Route::put('/visitor_update',[VisitorController::class,'visitor_update'])->name('visitor_update');
 
 
-Route::get('/activity',[\App\Http\Controllers\ActivityController::class,'activity'])->name('activity');
+//for_activity
+Route::get('/activity',[ActivityController::class,'activity'])->name('activity');
