@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->unsignedBigInteger('activity_id')->primary();
-            $table->unsignedBigInteger('officer_id');
-            $table->foreign('officer_id')->references('officer_id')->on('officers');
+            $table->unsignedBigInteger('o_id');
+            $table->foreign('o_id')->references('officer_id')->on('officers');
             $table->unsignedBigInteger('visitor_id')->nullable();
             $table->foreign('visitor_id')->references('v_id')->on('visitors');
             $table->string('name');

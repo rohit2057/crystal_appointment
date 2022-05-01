@@ -10,21 +10,24 @@ use Illuminate\Http\Request;
 class ActivityController extends Controller
 {
     function activity(){
-        return view('activity');
+
+        $data['a'] = Activity::leftjoin('officers','activities.o_id','=','officer_id')
+        ->leftjoin('visitors','activities.visitor_id','=','v_id')
+        ->get()->all(); 
+
+        $data['b'] = DB::table('officers')->get()->all();
+
+        $data['c'] = DB::table('visitors')->get()->all();
+
+        return view('activity',['value'=>$data]);
+
+        
         
     }
 
     // function getActivitiesDetails()
     // {
-    //     $activity['a'] = Activity::leftjoin('officers','activities.officer_id','=','officer.id')
-    //     ->leftjoin('visitors','activities.visitor_id','=','v.id')
-    //     ->get()->all(); 
-
-    //     $activity['b'] = DB::table('officers')->get()->all();
-
-    //     $activity['c'] = DB::table('visitors')->get()->all();
-
-    //     return view('activity',['value'=>$activity]);
+      
 
     // }
 
