@@ -103,6 +103,44 @@
   </div>
 </div> 
 
+
+{{-- appointment model --}}
+
+<div class="modal fade" id="appointmentBtn1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Appointments</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>SN</th>
+                      <th>Officer Name</th>
+                      <th>Date</th>
+                      <th>Start Time</th>
+                      <th>End Time</th>
+                      <th>Status</th>
+                  </tr>
+              </thead>
+              <tbody id="visitorAppointmentTbl">
+
+              </tbody>
+              
+          </table>
+      </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
     <div class="card">
       <div class="card-body">
          <div class="row">
@@ -150,7 +188,7 @@
                     <?php } ?>
                   </td>
                     
-                 <td>   <button class="btn btn-outline-primary"data-toggle="modal" data-target="#updateVisitor" onclick="showUpdateModal('{{$data}}')">Update</button>
+                 <td>   <button class="btn btn-outline-primary" data-toggle="modal" data-target="#updateVisitor" onclick="showUpdateModal('{{$data}}')">Update</button>
                   <script>
                     function showUpdateModal(strdata){
                       let data = JSON.parse(strdata);
@@ -163,7 +201,7 @@
                           
                        }
                 </script>
-                   <button class="btn btn-outline-primary">Appointment</button> </td>
+                   <button  type="button" class="btn btn-outline-primary"  id="appointmentBtn"   value="{{$data->v_id}}">Appointment</button> </td>
                     
                 </tr>
                 @endforeach
@@ -182,6 +220,39 @@
         });
       });
     
+
+      $(document).ready(function(){
+      $(document).on('click','#appointmentBtn',function(){
+        var user_id = $(this).val();
+        console.log(user_id);
+        $('#appointmentBtn1').modal('show');
+         var i = 1;
+        data = " ";
+        $.ajax({
+            type:"GET",
+            url:"getVisitorAppointment/"+user_id,
+            success:function(response){
+                console.log(response);
+                $.each(response,function(index,item){
+                    $.each(item,function(key, value){ 
+                        if(value.status == 'active')
+                        {
+                            data =data + "<tr><td>"+i+"</td><td>"+value.first_name +" "+ value.last_name+"</td><td>"+value.date+"</td><td>"+value.start_time+"</td><td>"+value.end_time+"</td><td><a class='btn btn-sm btn-success'>Active</a></td></tr>";
+                        }else if(value.status == 'inactive')
+                        {
+                            data =data + "<tr><td>"+i+"</td><td>"+value.first_name +" "+ value.last_name+"</td><td>"+value.date+"</td><td>"+value.start_time+"</td><td>"+value.end_time+"</td><td><a class='btn btn-sm btn-danger'>InActive</a></td></tr>";
+                        }else
+                        {
+                            data =data + "<tr><td>"+i+"</td><td>"+value.first_name +" "+ value.last_name+"</td><td>"+value.date+"</td><td>"+value.start_time+"</td><td>"+value.end_time+"</td><td><a class='btn btn-sm btn-warning'>Cancalled</a></td></tr>";
+                        }
+                        i++;
+                    });
+                });
+                $('#visitorAppointmentTbl').html(data);
+            }
+        });
+    });
+});
     </script>
 
 @endsection

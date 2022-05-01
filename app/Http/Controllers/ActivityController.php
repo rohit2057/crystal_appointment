@@ -25,10 +25,8 @@ class ActivityController extends Controller
         
     }
 
-    // function getActivitiesDetails()
-    // {
-      
+   function addActivity(Request $request){
 
-    // }
+   }
 
 }

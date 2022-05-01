@@ -33,6 +33,8 @@ Route::get('/visitor',[VisitorController::class,'visit'])->name('visitor');
 Route::post('/visitorAdd',[VisitorController::class,'visitorAdd'])->name('visitorAdd');
 Route::put('/getVisitorDetail',[VisitorController::class,'getVisitorDetail'])->name('getVisitorDetail');
 Route::put('/visitor_update',[VisitorController::class,'visitor_update'])->name('visitor_update');
+Route::get('/getVisitorAppointment/{id}',[VisitorController::class,'getVisitorAppointment'])->name('getVisitorAppointment');
+
 
 
 //for_activity

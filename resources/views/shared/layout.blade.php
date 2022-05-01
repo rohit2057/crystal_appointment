@@ -8,6 +8,12 @@
   <link rel="stylesheet" href="{{asset('assets/css/materialdesignicons.min.css')}}">
       <link rel="stylesheet" href="{{asset('assets/css/vendor.bundle.base.css')}}">
       <link rel="stylesheet" href="{{asset('assets/css/bootstrap-datepicker.min.css')}}">
+      <link rel="stylesheet" href="{{asset('assets/css/jquery-ui.css')}}">
+      <link rel="stylesheet" href="{{asset('assets/css/jquery-ui.min.css')}}">
+      <link rel="stylesheet" href="{{asset('assets/css/jquery-ui.structure.css')}}">
+      <link rel="stylesheet" href="{{asset('assets/css/jquery-ui.structure.min.css')}}">
+      <link rel="stylesheet" href="{{asset('assets/css/jquery-ui.theme.css')}}">
+      <link rel="stylesheet" href="{{asset('assets/css/jquery-ui.theme.min.css')}}">
       <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 </head>
 <body class="sidebar-light">
@@ -89,5 +95,9 @@
   <script src="{{ asset('assets/js/settings.js') }}"></script>
   <script src="{{ asset('assets/js/todolist.js') }}"></script>
   <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery-ui.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+  <script src="{{ asset('assets/js/jquery.slim.min.js') }}"></script>
 </body>
 </html>

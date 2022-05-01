@@ -1,8 +1,83 @@
 @extends('shared.layout')
 @section('content')
 
+{{-- add activity model --}}
 
-    
+<div class="modal fade" id="addActivity" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Activity</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="">
+          @csrf
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" name="v_name" id="first_name" class="form-control" />
+                <label class="form-label" for="form6Example1">Officer Name </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="contact" name="v_contact" id="v_contact" class="form-control" />
+                <label class="form-label" for="form6Example2">Visitor Name</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" name="v_name" id="first_name" class="form-control" />
+                <label class="form-label" for="form6Example1">Name </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="contact" name="v_contact" id="v_contact" class="form-control" />
+                <label class="form-label" for="form6Example2">Type</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" name="v_name" id="first_name" class="form-control" />
+                <label class="form-label" for="form6Example1">start time </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="contact" name="v_contact" id="v_contact" class="form-control" />
+                <label class="form-label" for="form6Example2">end time</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="email" name="v_email" id="v_email" class="form-control" />
+                <label class="form-label" for="form6Example1">date</label>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Activity</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div> 
+   
+
+
       <div class="card">
         <div class="card-body">
           <div class="row">
@@ -12,7 +87,7 @@
                     <tr>
                         <div class="d-flex flex-row justify-content-between">
                           
-                            <a class="btn btn-secondary align-self-center d-block" data-toggle="modal" data-target="#">add new activity</a>
+                          <a class="btn btn-secondary align-self-center d-block" data-toggle="modal" data-target="#addActivity">Add Visitor</a>
                         </div>
                     </tr>
                   <thead>

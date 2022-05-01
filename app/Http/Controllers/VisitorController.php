@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\officer;
 use App\Models\visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,6 +66,24 @@ class VisitorController extends Controller
 
      return redirect()->back()->with('success','Visitor updated Successfully');
 }
+
+     function getVisitorAppointment($id)
+   {
+        $data = DB::table('activities')
+        ->join('officers','activities.o_id','=','officer_id')
+        ->join('visitors','activities.visitor_id','=','v_id')
+        ->where('v_id','=',$id)
+        ->where('type','=','appointment')
+        ->get();
+
+        
+
+       return response()->json([
+        'data'=>$data,
+    ]);
+   }
+
+ 
 
   
 
