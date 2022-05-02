@@ -210,13 +210,13 @@
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <input type="text" name="work_start_time" id="work_start_time" class="form-control" />
+                <input type="time" name="work_start_time" id="work_start_time" class="form-control" />
                 <label class="form-label" for="form6Example1">Start Time</label>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <input type="text" name="work_end_time" id="work_end_time" class="form-control" />
+                <input type="time" name="work_end_time" id="work_end_time" class="form-control" />
                 <label class="form-label" for="form6Example2">End Time</label>
               </div>
             </div>

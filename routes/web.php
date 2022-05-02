@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\VisitorController;
-use App\Http\Controllers\ActivityController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,4 +39,7 @@ Route::get('/getVisitorAppointment/{id}',[VisitorController::class,'getVisitorAp
 
 
 //for_activity
+
+Route::put('/activity_update',[ActivityController::class,'activity_update'])->name('activity_update');
+Route::post('/activityAdd',[ActivityController::class,'activityAdd'])->name('activityAdd');
 Route::get('/activity',[ActivityController::class,'activity'])->name('activity');

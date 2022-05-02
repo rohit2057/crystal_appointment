@@ -25,7 +25,7 @@ class VisitorController extends Controller
         $obj->v_email = $request->v_email;
         $obj->save();
 
-        return redirect()->back()->with('success','You have successfully added an Visitor');
+        return redirect()->back()->with('success','You have successfully added a Visitor');
      
     }
         

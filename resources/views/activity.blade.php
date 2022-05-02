@@ -13,7 +13,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="">
+        <form method="POST" action="{{route('activityAdd')}}">
           @csrf
           <!-- 2 column grid layout with text inputs for the first and last names -->
           <div class="row mb-4">
@@ -38,22 +38,26 @@
               </div>
             </div>
             <div class="col">
-              <div class="form-outline">
-                <input type="contact" name="v_contact" id="v_contact" class="form-control" />
-                <label class="form-label" for="form6Example2">Type</label>
-              </div>
+              <div class="form-group">
+                <label for="type">Type:<span class="text-danger">*</span></label>
+                <select class="form-control" name="type" id="type">
+                  <option>Appointment</option>
+                  <option>Leave</option>
+                  <option>Break</option>
+                </select>
+            </div>
             </div>
           </div>
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <input type="text" name="v_name" id="first_name" class="form-control" />
+                <input type="time" name="v_name" id="first_name" class="form-control" />
                 <label class="form-label" for="form6Example1">start time </label>
               </div>
             </div>
             <div class="col">
               <div class="form-outline">
-                <input type="contact" name="v_contact" id="v_contact" class="form-control" />
+                <input type="time" name="v_contact" id="v_contact" class="form-control" />
                 <label class="form-label" for="form6Example2">end time</label>
               </div>
             </div>
@@ -62,7 +66,7 @@
           <div class="row mb-4">
             <div class="col">
               <div class="form-outline">
-                <input type="email" name="v_email" id="v_email" class="form-control" />
+                <input type="date" name="date" id="date" class="form-control" />
                 <label class="form-label" for="form6Example1">date</label>
               </div>
             </div>
@@ -87,7 +91,7 @@
                     <tr>
                         <div class="d-flex flex-row justify-content-between">
                           
-                          <a class="btn btn-secondary align-self-center d-block" data-toggle="modal" data-target="#addActivity">Add Visitor</a>
+                          <a class="btn btn-secondary align-self-center d-block" data-toggle="modal" data-target="#addActivity">Add Activity</a>
                         </div>
                     </tr>
                   <thead>
@@ -127,11 +131,11 @@
                       @endif 
                       @if ($item->status == 'active')
                       <td>
-                          <form action="" method="POST">
-                              @csrf
-                              @method('put')
+                          <form action="{{route('activity_update')}}" method="POST">
+                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                              <input name="_method" type="hidden" value="PUT">
                               <input type="hidden" name="officer_id" id="officer_id" value="{{$item->officer_id}}">
-                              <input type="hidden" name="visitor_id" id="visitor_id" value="{{$item->v_id}}">
+                              <input type="hidden" name="visitor_id" id="visitor_id" value="{{$item->visitor_id}}">
                               <input type="hidden" name="activity_id" id="activity_id" value="{{$item->activity_id}}">
                               <input type="hidden" name="status_value" id="status_value" value="{{$item->status}}">
                               <button class="btn btn-sm btn-success">Active</button>
@@ -140,11 +144,11 @@
                           
                   @elseif($item->status == 'inactive')
                       <td>
-                          <form action="" method="POST">
-                              @csrf
-                              @method('put')
+                          <form action="{{route('activity_update')}}" method="POST">
+                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                              <input name="_method" type="hidden" value="PUT">
                               <input type="hidden" name="officer_id" id="officer_id" value="{{$item->officer_id}}">
-                              <input type="hidden" name="visitor_id" id="visitor_id" value="{{$item->v_id}}">
+                              <input type="hidden" name="visitor_id" id="visitor_id" value="{{$item->visitor_id}}">
                               <input type="hidden" name="activity_id" id="activity_id" value="{{$item->activity_id}}">
                               <input type="hidden" name="status_value" id="status_value" value="{{$item->status}}">
                           <button class="btn btn-sm btn-danger">InActive</button>

@@ -222,7 +222,7 @@
     
 
       $(document).ready(function(){
-      $(document).on('click','#appointmentBtn',function(){
+       $(document).on('click','#appointmentBtn',function(){
         var user_id = $(this).val();
         console.log(user_id);
         $('#appointmentBtn1').modal('show');
