@@ -15,8 +15,11 @@ class OfficerController extends Controller
     }
 
     function officerAdd(Request $request){
-       $obj= new officer();
      
+        $obj= new officer();
+       $id = rand(time(), 10000); 
+       
+       $obj->officer_id = $id;
        $obj->first_name = $request-> first_name;
        $obj->last_name = $request-> last_name;
        $obj->post = $request->post;
@@ -24,6 +27,15 @@ class OfficerController extends Controller
        $obj->work_start_time = $request->work_start_time;
        $obj->work_end_time = $request->work_end_time;
        $obj->save();
+
+       foreach($request->days as $key=>$name)
+       {
+           $obj1 = new workingdays();
+           $obj1->officer_id = $id;
+           $obj1->days_of_week = $name;
+           $obj1->save();
+       }
+    
        return redirect()->back()->with('success','You have successfully added an Officer');
     }
 

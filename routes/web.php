@@ -43,3 +43,7 @@ Route::get('/getVisitorAppointment/{id}',[VisitorController::class,'getVisitorAp
 Route::put('/activity_update',[ActivityController::class,'activity_update'])->name('activity_update');
 Route::post('/activityAdd',[ActivityController::class,'activityAdd'])->name('activityAdd');
 Route::get('/activity',[ActivityController::class,'activity'])->name('activity');
+Route::put('/cancelActivity',[ActivityController::class,'cancelActivity'])->name('cancelActivity');
+Route::put('/updateActivity',[ActivityController::class,'updateActivity'])->name('updateActivity');
+Route::get('/getActivityDetail/{id}',[activityController::class,'getActivityDetail'])->name('getActivityDetail');
+

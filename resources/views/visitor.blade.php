@@ -7,6 +7,8 @@
   </div>
 @endif
 
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+
  {{-- modal for Update --}}
  <div class="modal fade" id="updateVisitor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -165,9 +167,10 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php $count = 1; ?>
                   @foreach ($value as $data)
                   <tr>
-                    <td>{{$data->v_id}}</td>
+                    <td>{{$count}}</td>
                     <td>{{$data->v_name}}</td>
                     <td>{{$data->v_contact}}</td>
                     <td>{{$data->v_email}}</td>
@@ -204,6 +207,7 @@
                    <button  type="button" class="btn btn-outline-primary"  id="appointmentBtn"   value="{{$data->v_id}}">Appointment</button> </td>
                     
                 </tr>
+                <?php $count++ ?>
                 @endforeach
                 
                 </tbody>
@@ -225,7 +229,7 @@
        $(document).on('click','#appointmentBtn',function(){
         var user_id = $(this).val();
         console.log(user_id);
-        $('#appointmentBtn1').modal('show');
+        $('#appointmentBtn').modal('show');
          var i = 1;
         data = " ";
         $.ajax({

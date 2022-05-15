@@ -98,6 +98,6 @@
   <script src="{{ asset('assets/js/jquery-ui.js') }}"></script>
   <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
   <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-  <script src="{{ asset('assets/js/jquery.slim.min.js') }}"></script>
+  
 </body>
 </html>
