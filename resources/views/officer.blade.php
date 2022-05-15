@@ -8,6 +8,103 @@
   </div>
 @endif
 
+
+{{-- appointment modal --}} 
+{{-- <div class="modal fade" id="updateOfficer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Officer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{route('getOfficerDetail')}}">
+          @csrf
+          @method('put')
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <input type="hidden" name="officer_id" id="officer_id">
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" name="new_first_name" id="firstName" class="form-control"/>
+                <label class="form-label" for="form6Example1">First name</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" name="new_last_name" id="lastName" class="form-control" />
+                <label class="form-label" for="form6Example2">Last name</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <input type="time" name="new_work_start_time" id="startTime" class="form-control" />
+                <label class="form-label" for="form6Example1">Start Time</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <input type="time" name="new_work_end_time" id="endTime" class="form-control" />
+                <label class="form-label" for="form6Example2">End Time</label>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-outline">
+                <input type="text" name="new_post" id="post" class="form-control" />
+                <label class="form-label" for="form6Example2">Post</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-check form-check-inline form-group">
+                <label>Work Days</label>
+                <div class="input-group">
+                    <div class="col">
+                        <input class="form-check-input" type="checkbox" name="days[]" id="sunday" value="sunday">
+                        <label class="form-check-label" for="sunday">Sun</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" type="checkbox" name="days[]" id="monday" value="monday">
+                        <label class="form-check-label" for="monday">Mon</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" type="checkbox" name="days[]" id="tuesday" value="tuesday">
+                        <label class="form-check-label" for="tuesday">Tue</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" type="checkbox" name="days[]" id="wednesday" value="wednesday">
+                        <label class="form-check-label" for="wednesday">Wed</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" type="checkbox" name="days[]" id="thursday" value="thursday">
+                        <label class="form-check-label" for="thursday">Thur</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" type="checkbox" name="days[]" id="friday" value="friday">
+                        <label class="form-check-label" for="friday">Fri</label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" type="checkbox" name="days[]" id="saturday" value="saturday">
+                        <label class="form-check-label" for="saturday">Sat</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <button type="submit"  class="btn btn-primary">Update Officer</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div> --}}
+
 {{-- modal for updating officer --}} 
 <div class="modal fade" id="updateOfficer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -236,7 +333,7 @@
                           <td>{{$data->work_start_time}}</td>
                           <td>{{$data->work_end_time}}</td>
                           {{-- <td>{{$data->status}}</td> --}}
-                        <td>  <?php if($data->status == 'active'){ ?> 
+                        <td>  <?php if($data->officer_status == 'active'){ ?> 
                             <form action="status_update" method="post" id="submitform">
                               @csrf
                               @method('put')

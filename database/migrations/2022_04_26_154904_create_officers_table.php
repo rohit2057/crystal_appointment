@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('post');
-            $table->string('status');
+            $table->string('officer_status');
             $table->time('work_start_time');
             $table->time('work_end_time');
             $table->timestamps();

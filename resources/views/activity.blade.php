@@ -39,7 +39,7 @@
                   <select class="form-select" searchable="Search here.." name="o_id">
                     <option  disabled selected>Select Officer</option>
                     @foreach ( $value['b'] as $res)
-                        @if ($res->status == 'inactive')
+                        @if ($res->officer_status == 'inactive')
                         {
                         }@else
                         {       
@@ -141,7 +141,7 @@
                 <select class="form-select" searchable="Search here.." name="new_o_id">
                   <option  disabled selected>Select Officer</option>
                   @foreach ( $value['b'] as $res)
-                      @if ($res->status == 'inactive')
+                      @if ($res->officer_status == 'inactive')
                       {
                       }@else
                       {       
@@ -212,9 +212,19 @@
 
 
      <div class="card">
+       
         <div class="card-body">
+          
           <div class="row">
+            
+              <form action="" >
+                @csrf
+                <input type="hidden" name="filter_key" id="filter_key" value="officer">
+                <input class="form-control" type="text" name="search" id="search" autocomplete="off" placeholder="Search">
+            </form>
+            
             <div class="col-12">
+              
               <div class="table-responsive">
                 <table id="order-listing" class="table">
                     <tr>
@@ -238,6 +248,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <?php $count = 1; ?>
                     @foreach  ($value['a'] as $item)
                    
                     <tr>
@@ -277,7 +288,7 @@
                               <form action="{{route('activity_update')}}" method="POST">
                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                   <input name="_method" type="hidden" value="PUT">
-                                  <input type="hidden" name="officer_id" id="officer_id" value="{{$item->officer_id}}">
+                                  <input type="hidden" name="officer_id" id="officer_id" value="{{$item->o_id}}">
                                   <input type="hidden" name="visitor_id" id="visitor_id" value="{{$item->visitor_id}}">
                                   <input type="hidden" name="activity_id" id="activity_id" value="{{$item->activity_id}}">
                                   <input type="hidden" name="status_value" id="status_value" value="{{$item->status}}">
@@ -304,6 +315,7 @@
                         </div>
                      </td>
                     </tr>
+                    <?php $count++ ?>
                     @endforeach
                   </tbody>
                 </table>

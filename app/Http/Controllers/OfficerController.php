@@ -23,7 +23,7 @@ class OfficerController extends Controller
        $obj->first_name = $request-> first_name;
        $obj->last_name = $request-> last_name;
        $obj->post = $request->post;
-       $obj->status = 'active';
+       $obj->officer_status = 'active';
        $obj->work_start_time = $request->work_start_time;
        $obj->work_end_time = $request->work_end_time;
        $obj->save();
@@ -44,19 +44,19 @@ function status_update(Request $request)
 {
 	//get product status with the help of product ID
 	$data = DB::table('officers')
-				->select('status')
+				->select('officer_status')
 				->where('officer_id','=',$request->submit)
 				->first();
 
 	//Check user status
-	if($data->status == 'active'){
+	if($data->officer_status == 'active'){
 		$status = 'inactive';
-	}elseif($data->status == 'inactive'){
+	}elseif($data->officer_status == 'inactive'){
 		$status = 'active';
 	}
 
 	//update product status
-	$values = array('status' => $status );
+	$values = array('officer_status' => $status );
 	DB::table('officers')->where('officer_id',$request->submit)->update($values);
 
     return redirect()->back()->with('success','status updated Successfully');

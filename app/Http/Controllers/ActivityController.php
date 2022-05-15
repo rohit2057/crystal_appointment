@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 
+date_default_timezone_set("Asia/Katmandu");
 class ActivityController extends Controller
   {
     function activity()
@@ -36,11 +37,11 @@ class ActivityController extends Controller
             DB::table('activities')->where('activity_id',$req->activity_id)->update(array('status'=> 'inactive'));
         }else
         {
-            $statusOfficer = (object)DB::table('officers')->select('status')->where('officer_id',$req->officer_id)->get();
+            $statusOfficer = (object)DB::table('officers')->select('officer_status')->where('officer_id',$req->officer_id)->get();
             $statusVisitor = (object)DB::table('visitors')->select('v_status')->where('v_id',$req->visitor_id)->get();
 
             foreach($statusOfficer as $stat){
-                if($stat->status == 'active'){
+                if($stat->officer_status == 'active'){
                     $officerStatus = 'active';
                 }
                 else{
@@ -394,6 +395,77 @@ class ActivityController extends Controller
 
 	
 //   }
+
+        function searchResult(Request $request)
+        {
+            
+            if($request->key == 'officer')
+            {
+                $res = DB::table('activities')
+                ->leftjoin('officers','activities.o_id', '=', 'o.id')
+                ->leftJoin('visitors','activities.visitor_id','=','visitor.id')
+                ->where('first_name','like','%'.$request->searchData.'%')
+                ->orWhere('last_name','like','%'.$request->searchData.'%')
+                ->orderBy('date', 'DESC')
+                ->get();
+
+                return $res;
+            }
+            elseif($request->key == 'visitor')
+            {
+                $res = DB::table('activities')
+                ->leftjoin('officers','activities.o_id', '=', 'o.id')
+                ->leftJoin('visitors','activities.visitor_id','=','visitor.id')
+                ->where('v_name','like','%'.$request->searchData.'%')
+                ->orderBy('date', 'DESC')
+                ->get();
+
+                return $res;
+            }
+            elseif($request->key == 'type')
+            {
+                $res = DB::table('activities')
+                ->leftjoin('officers','activities.o_id', '=', 'o.id')
+                ->leftJoin('visitors','activities.visitor_id','=','visitor.id')
+                ->where($request->key,'like','%'.$request->searchData.'%')
+                ->orderBy('date', 'DESC')
+                ->get();
+
+                return $res;
+            }elseif( $request->key == 'status')
+            {
+                $res = DB::table('activities')
+                ->leftjoin('officers','activities.o_id', '=', 'o.id')
+                ->leftJoin('visitors','activities.visitor_id','=','visitor.id')
+                ->where($request->key,'like',$request->searchData.'%')
+                ->orderBy('date', 'DESC')
+                ->get();
+
+                return $res;
+            }elseif($request->key == 'date')
+            {
+                $res = DB::table('activities')
+                ->leftjoin('officers','activities.o_id', '=', 'o.id')
+                ->leftJoin('visitors','activities.visitor_id','=','visitor.id')
+                ->whereDate('date', '>=',$request->fromdate)
+                ->whereDate('date', '<=',$request->todate)
+                ->orderBy('date', 'DESC')
+                ->get();
+
+                return $res;
+            }elseif($request->key == 'time')
+            {
+                $res = DB::table('activities')
+                ->leftjoin('officers','activities.o_id', '=', 'o.id')
+                ->leftJoin('visitors','activities.visitor_id','=','visitors.id')
+                ->whereTime('start_time', '>',$request->fromtime,)
+                ->whereTime('start_time', '<',$request->totime,)
+                ->orderBy('date', 'DESC')
+                ->get();
+
+                return $res;
+            }
+        }
 
 
 }
