@@ -130,9 +130,9 @@
                       <th>Status</th>
                   </tr>
               </thead>
-              <tbody id="visitorAppointmentTbl">
+              {{-- <tbody id="visitorAppointmentTbl"> --}}
 
-              </tbody>
+              {{-- </tbody> --}}
               
           </table>
       </div>
@@ -204,7 +204,7 @@
                           
                        }
                 </script>
-                   <button  type="button" class="btn btn-outline-primary"  id="appointmentBtn"   value="{{$data->v_id}}">Appointment</button> </td>
+                   <button  type="button" class="btn btn-outline-primary"  data-toggle="modal" data-target="#appointmentBtn1" {{-- id="appointmentBtn1" --}}  {{--value="{{$data->v_id}}" --}}>Appointment</button> </td>
                     
                 </tr>
                 <?php $count++ ?>
@@ -226,10 +226,10 @@
     
 
       $(document).ready(function(){
-       $(document).on('click','#appointmentBtn',function(){
+       $(document).on('click','#appointmentBtn1',function(){
         var user_id = $(this).val();
         console.log(user_id);
-        $('#appointmentBtn').modal('show');
+        $('#appointmentBtn1').modal('show');
          var i = 1;
         data = " ";
         $.ajax({

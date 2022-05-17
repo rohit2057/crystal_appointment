@@ -372,29 +372,7 @@ class ActivityController extends Controller
             'visitorname' => $visitorname,
         ]);
     }
-//     function activityStatus(Request $request)
-//   {
-// 	//get product status with the help of product ID
-// 	$data = DB::table('activities')
-// 				->select('status')
-// 				->where('activity_id','=',$request->submit)
-// 				->first();
 
-// 	//Check user status
-// 	if($data->status == 'active'){
-// 		$status = 'inactive';
-// 	}elseif($data->status == 'inactive'){
-// 		$status = 'active';
-// 	}
-
-// 	//update product status
-// 	$values = array('status' => $status );
-// 	DB::table('activities')->where('activity_id',$request->submit)->update($values);
-
-//     return redirect()->back()->with('success','status updated Successfully');
-
-	
-//   }
 
         function searchResult(Request $request)
         {
